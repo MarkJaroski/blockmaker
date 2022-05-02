@@ -1,0 +1,39 @@
+#!/usr/bin/perl -w
+
+use strict;
+use Data::Dumper;
+
+my @links;
+my $link = {};
+my $count = 0;
+
+open IN, "input.txt";
+while (my $line = <IN>) {
+    # if we have a blank line reset everything
+    if ($line =~ /^$/) {
+        push @links, $link if exists($link->{url});
+        $link = {};
+        $count = 0;
+    } else {
+        if ($count == 0) { # first line is the title
+            $link->{title} = $line;
+            $count++;
+        } elsif ($count == 1) { # second line is the source
+            $link->{source} = $line;
+            $count++;
+        } elsif ($count == 2) { # XXX: third line is the URL
+            $link->{url} = $line;
+            $count++;
+        }
+    }
+
+}
+
+my $first = 1;
+foreach my $block (@links) {
+    print "<br><br>\n" unless $first;
+    $first = 0;
+    print $block->{title} . " - <a href='" . $block->{url} . "'>" . $block->{source} . "</a>" . "\n";
+}
+
+
