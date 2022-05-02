@@ -15,6 +15,7 @@ while (my $line = <IN>) {
         $link = {};
         $count = 0;
     } else {
+        chomp($line);
         if ($count == 0) { # first line is the title
             $link->{title} = $line;
             $count++;
@@ -33,7 +34,9 @@ my $first = 1;
 foreach my $block (@links) {
     print "<br><br>\n" unless $first;
     $first = 0;
-    print $block->{title} . " - <a href='" . $block->{url} . "'>" . $block->{source} . "</a>" . "\n";
+    print $block->{title} . ' - <a  alias="' . $block->{source} . '" conversion="false" data-linkto="https://" href="' 
+        . $block->{url} . '" style="color:#00B1E7;text-decoration:underline;" title="' 
+        . $block->{source} . '">' . $block->{source} . "</a>" . "\n";
 }
 
 
