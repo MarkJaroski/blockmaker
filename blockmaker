@@ -7,7 +7,9 @@ my @links;
 my $link = {};
 my $count = 0;
 
-open IN, "input.txt";
+my $filename = $ARGV[0];
+
+open IN, $filename or die "Couldn't get file $filename";
 while (my $line = <IN>) {
     # if we have a blank line reset everything
     if ($line =~ /^$/) {
