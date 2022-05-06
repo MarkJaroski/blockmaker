@@ -3,17 +3,17 @@
 use strict;
 use Data::Dumper;
 
-my @links;
+my %links;
 my $link = {};
 my $count = 0;
 
 my $filename = $ARGV[0];
 
-open IN, $filename or die "Couldn't get file $filename";
+open IN, $filename or die "Couldn't open file $filename\n";
 while (my $line = <IN>) {
     # if we have a blank line reset everything
     if ($line =~ /^$/) {
-        push @links, $link if exists($link->{url});
+        $links{$link->{key}} = $link;
         $link = {};
         $count = 0;
     } else {
@@ -27,13 +27,17 @@ while (my $line = <IN>) {
         } elsif ($count == 2) { # XXX: third line is the URL
             $link->{url} = $line;
             $count++;
+        } elsif ($count == 3) { # XXX: fourth line is the sort key
+            $link->{key} = $line;
+            $count++;
         }
     }
 
 }
 
 my $first = 1;
-foreach my $block (@links) {
+foreach my $key (sort(keys(%links))) {
+    my $block = %links{$key};
     print "<br><br>\n" unless $first;
     $first = 0;
     print $block->{title} . ' - <a  alias="' . $block->{source} . '" conversion="false" data-linkto="https://" href="' 
