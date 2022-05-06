@@ -3,17 +3,18 @@
 use strict;
 use Data::Dumper;
 
-my %links;
+my %sections;
 my $link = {};
 my $count = 0;
 
 my $filename = $ARGV[0];
 
 open IN, $filename or die "Couldn't open file $filename\n";
+
 while (my $line = <IN>) {
     # if we have a blank line reset everything
     if ($line =~ /^$/) {
-        $links{$link->{key}} = $link;
+        push @{$sections{$link->{section}}}, $link if exists $link->{section};
         $link = {};
         $count = 0;
     } else {
@@ -28,21 +29,26 @@ while (my $line = <IN>) {
             $link->{url} = $line;
             $count++;
         } elsif ($count == 3) { # XXX: fourth line is the sort key
-            $link->{key} = $line;
+            $link->{section} = $line;
             $count++;
         }
     }
 
 }
 
-my $first = 1;
-foreach my $key (sort(keys(%links))) {
-    my $block = %links{$key};
-    print "<br><br>\n" unless $first;
-    $first = 0;
-    print $block->{title} . ' - <a  alias="' . $block->{source} . '" conversion="false" data-linkto="https://" href="' 
-        . $block->{url} . '" style="color:#00B1E7;text-decoration:underline;" title="' 
-        . $block->{source} . '">' . $block->{source} . "</a>" . "\n";
+#print Dumper(\%sections);
+
+
+foreach my $section (keys(%sections)) {
+    print "\n\n\n\n$section\n\n";
+    my $first = 1;
+    foreach my $block (@{$sections{$section}}) {
+        print "<br><br>\n" unless $first;
+        $first = 0;
+        print $block->{title} . ' - <a  alias="' . $block->{source} . '" conversion="false" data-linkto="https://" href="' 
+            . $block->{url} . '" style="color:#00B1E7;text-decoration:underline;" title="' 
+            . $block->{source} . '">' . $block->{source} . "</a>" . "\n";
+   }
 }
 
 
