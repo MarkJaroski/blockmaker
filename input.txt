@@ -3,10 +3,20 @@ Le Temps/AFP
 https://www.letemps.ch/sciences/un-vaccin-contre-meningite-pourrait-proteger-contre-gonorrhee
 dkdc
 
+HTTP Host header attacks
+Portswigger
+https://portswigger.net/web-security/host-header
+Hacking
+
 Coqueluche : le vaccin est désormais recommandé aux femmes enceintes en France (13 avril)
 Pourquoi Docteur
 https://www.pourquoidocteur.fr/Articles/Question-d-actu/39100-Coqueluche-vaccin-recommande-femmes-enceintes
 Gavi
+
+Content Security Policy
+Portswigger
+https://portswigger.net/web-security/cross-site-scripting/content-security-policy
+Hacking
 
 Cancer du col de l'utérus : une dose de vaccin suffisante pour les jeunes selon l'OMS (12 avril)
 Le Figaro/AFP
@@ -18,4 +28,8 @@ Atlantico
 https://atlantico.fr/article/decryptage/avant-ses-decouvertes-contre-la-rage-louis-pasteur-avait-entame-des-recherches-sur-les-vaccins-en-etudiant-des-animaux-porteurs-de-la-fievre-charbonneuse-science-medecine-marc-menant
 Gavi
 
+Dangling Markup Injection
+Portswigger
+https://portswigger.net/web-security/cross-site-scripting/dangling-markup
+Hacking
 
