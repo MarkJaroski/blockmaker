@@ -61,4 +61,3 @@ foreach my $section (keys(%sections)) {
 }
 
 # TODO: dump the whole thing into a db table, probably MariaDB
-
