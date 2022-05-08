@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 
 use strict;
-use Data::Dumper;
+#use Data::Dumper;
 
 my %sections;
 my $link = {};
@@ -9,10 +9,18 @@ my $count = 0;
 
 my $filename = $ARGV[0];
 
+# TODO: add GetOpts::Long for GNU style options
+# TODO: implement help and version
+# TODO: implment an option to output split files per section
+# TODO: implement main()
+
+# TODO: do more error checking on why we can't open the file
 open IN, $filename or die "Couldn't open file $filename\n";
 
 while (my $line = <IN>) {
     # if we have a blank line reset everything
+    # TODO: think about lines with random spaces
+    # TODO: allow for extra blank lines between sections
     if ($line =~ /^$/) {
         push @{$sections{$link->{section}}}, $link if exists $link->{section};
         $link = {};
@@ -25,10 +33,10 @@ while (my $line = <IN>) {
         } elsif ($count == 1) { # second line is the source
             $link->{source} = $line;
             $count++;
-        } elsif ($count == 2) { # XXX: third line is the URL
+        } elsif ($count == 2) { # third line is the URL
             $link->{url} = $line;
             $count++;
-        } elsif ($count == 3) { # XXX: fourth line is the sort key
+        } elsif ($count == 3) { # fourth line is the sort key
             $link->{section} = $line;
             $count++;
         }
@@ -38,17 +46,19 @@ while (my $line = <IN>) {
 
 #print Dumper(\%sections);
 
-
 foreach my $section (keys(%sections)) {
+    # TODO: implement file splitting
     print "\n\n\n\n$section\n\n";
     my $first = 1;
     foreach my $block (@{$sections{$section}}) {
         print "<br><br>\n" unless $first;
         $first = 0;
+        # TODO: make a nicer looking template
         print $block->{title} . ' - <a  alias="' . $block->{source} . '" conversion="false" data-linkto="https://" href="' 
             . $block->{url} . '" style="color:#00B1E7;text-decoration:underline;" title="' 
             . $block->{source} . '">' . $block->{source} . "</a>" . "\n";
    }
 }
 
+# TODO: dump the whole thing into a db table, probably MariaDB
 
