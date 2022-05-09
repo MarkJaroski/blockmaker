@@ -1,6 +1,7 @@
 #!/usr/bin/perl -w
 
 use strict;
+use Text::Trim;
 #use Data::Dumper;
 
 my %sections;
@@ -26,7 +27,8 @@ while (my $line = <IN>) {
         $link = {};
         $count = 0;
     } else {
-        chomp($line);
+        trim $line;
+        $line = lc($line);
         if ($count == 0) { # first line is the title
             $link->{title} = $line;
             $count++;
