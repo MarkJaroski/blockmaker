@@ -28,7 +28,6 @@ while (my $line = <IN>) {
         $count = 0;
     } else {
         trim $line;
-        $line = lc($line);
         if ($count == 0) { # first line is the title
             $link->{title} = $line;
             $count++;
@@ -39,6 +38,7 @@ while (my $line = <IN>) {
             $link->{url} = $line;
             $count++;
         } elsif ($count == 3) { # fourth line is the sort key
+            $line = lc($line);
             $link->{section} = $line;
             $count++;
         }
