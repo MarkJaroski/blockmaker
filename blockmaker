@@ -22,7 +22,7 @@ while (my $line = <IN>) {
     # if we have a blank line reset everything
     # TODO: think about lines with random spaces
     # TODO: allow for extra blank lines between sections
-    if ($line =~ /^$/) {
+    if ($line =~ /^\s*$/) {
         push @{$sections{$link->{section}}}, $link if exists $link->{section};
         $link = {};
         $count = 0;
