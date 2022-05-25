@@ -4,16 +4,29 @@ use strict;
 use Text::Trim;
 #use Data::Dumper;
 
+use constant {
+    WORKDIR => "/home/allegra/Desktop/Work/Gavi/newsletter",
+    TMPDIR => "/tmp"
+};
+
 my %sections;
 my $link = {};
 my $count = 0;
 
 my $filename = $ARGV[0];
 
+my $frenchfile = '';
+if (-d WORKDIR ) {
+    $frenchfile = WORKDIR . '/frenchfile';
+} else {
+    $frenchfile = TMPDIR . '/frenchfile.txt';
+}
+
 # TODO: add GetOpts::Long for GNU style options
 # TODO: implement help and version
 # TODO: implment an option to output split files per section
 # TODO: implement main()
+
 
 # TODO: do more error checking on why we can't open the file
 open IN, $filename or die $!;
@@ -41,24 +54,35 @@ while (my $line = <IN>) {
         }
     }
 }
+close IN;
 
 # pick up stanzas at the end of the file with no blank line
 push @{$sections{$link->{section}}}, $link if exists $link->{section};
 
 #print Dumper(\%sections);
 
+open FR, ">>$frenchfile" or die $!;
 foreach my $section (keys(%sections)) {
-    # TODO: implement file splitting
-    print "\n\n\n\n$section\n\n";
-    my $first = 1;
-    foreach my $block (@{$sections{$section}}) {
-        print "<br><br>\n" unless $first;
-        $first = 0;
-        # TODO: make a nicer looking template
-        print $block->{title} . ' - <a  alias="' . $block->{source} . '" conversion="false" data-linkto="https://" href="' 
-            . $block->{url} . '" style="color:#00B1E7;text-decoration:underline;" title="' 
-            . $block->{source} . '">' . $block->{source} . "</a>" . "\n";
+        # TODO: implement file splitting
+        print "\n\n\n\n$section\n\n" unless $section eq "french";
+        my $first = 1;
+        foreach my $block (@{$sections{$section}}) {
+        if ($section eq "french") {
+            print FR "\n";
+            print FR $block->{title} . "\n";
+            print FR $block->{source} . "\n";
+            print FR $block->{url} . "\n";
+            print FR $block->{section} . "\n\n";
+        } else {
+            print "<br><br>\n" unless $first;
+            $first = 0;
+            # TODO: make a nicer looking template
+            print $block->{title} . ' - <a  alias="' . $block->{source} . '" conversion="false" data-linkto="https://" href="' 
+                . $block->{url} . '" style="color:#00B1E7;text-decoration:underline;" title="' 
+                . $block->{source} . '">' . $block->{source} . "</a>" . "\n";
+       }
    }
 }
+close FR;
 
 # TODO: dump the whole thing into a db table, probably MariaDB
