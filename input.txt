@@ -1,35 +1,39 @@
-Un vaccin contre la méningite pourrait protéger contre la gonorrhée (13 avril)
-Le Temps/AFP
-https://www.letemps.ch/sciences/un-vaccin-contre-meningite-pourrait-proteger-contre-gonorrhee
-dkdc
+(no gavi etc) WHO Chief: 'Misguided to Think This Pandemic Is Over'
+Voice of America
+https://www.voanews.com/a/who-chief-misguided-to-think-this-pandemic-is-over-/6569908.html
+summit
 
-HTTP Host header attacks
-Portswigger
-https://portswigger.net/web-security/host-header
-Hacking
+(gavi, covax, "indemnity clauses regarding")N Korea gets offers of aid, 'prefers US-made vaccines'
+The Bangkok Post/Reuters
+https://www.bangkokpost.com/world/2309590/north-korea-gets-offers-of-aid-to-fight-covid-1-prefers-us-made-vaccines
+korea
 
-Coqueluche : le vaccin est désormais recommandé aux femmes enceintes en France (13 avril)
-Pourquoi Docteur
-https://www.pourquoidocteur.fr/Articles/Question-d-actu/39100-Coqueluche-vaccin-recommande-femmes-enceintes
-Gavi
+(gavi)S.Africa's president says agencies should order Africa-made vaccines
+Reuters
+https://www.reuters.com/world/africa/we-will-learn-plight-aspens-safrican-covid-vaccine-plant-who-2022-05-12/
+french
 
-Content Security Policy
-Portswigger
-https://portswigger.net/web-security/cross-site-scripting/content-security-policy
-Hacking
+(gavi, covax)North Korea faces its first covid outbreak without any vaccines
+The Washington Post
+https://www.washingtonpost.com/world/2022/05/12/north-korea-covid-omicron-vaccines/
+korea
 
-Cancer du col de l'utérus : une dose de vaccin suffisante pour les jeunes selon l'OMS (12 avril)
-Le Figaro/AFP
-https://www.lefigaro.fr/sciences/cancer-du-col-de-l-uterus-une-dose-de-vaccin-suffisante-pour-les-jeunes-selon-l-oms-20220412
-dkdc
+(covax, monitoring requirement)North Korea announces first COVID death with 350,000 treated for fever spreading 'explosively', state media says
+Sky News
+https://news.sky.com/story/north-korea-announces-first-covid-death-with-350-000-treated-for-fever-spreading-explosively-state-media-says-12611800
+korea
 
-Avant ses découvertes contre la rage, Louis Pasteur avait entamé des recherches sur les vaccins en étudiant des animaux porteurs de la fièvre charbonneuse (9 avril)
-Atlantico
-https://atlantico.fr/article/decryptage/avant-ses-decouvertes-contre-la-rage-louis-pasteur-avait-entame-des-recherches-sur-les-vaccins-en-etudiant-des-animaux-porteurs-de-la-fievre-charbonneuse-science-medecine-marc-menant
-Gavi
+(not yet received order from covax)Novavax Confident Covid Vaccine Will Receive FDA Authorization in June After Delays 
+CNBC
+https://www.nbcconnecticut.com/news/business/money-report/novavax-confident-covid-vaccine-will-receive-fda-authorization-in-june-after-delays/2784304
+flag
 
-Dangling Markup Injection
-Portswigger
-https://portswigger.net/web-security/cross-site-scripting/dangling-markup
-Hacking
+(indemnity clauses) N.Korea gets offers of aid to fight COVID as it lacks vaccines
+Reuters
+https://www.reuters.com/article/us-health-coronavirus-northkorea-vaccine/n-korea-gets-offers-of-aid-to-fight-covid-as-it-lacks-vaccines-idUSKCN2MZ0GJ
+korea
 
+(gavi, covax, jandj says there's nothing stopping gavi from buying)Africa’s First Covid-19 Vaccine Factory Hasn’t Received a Single Order
+New York Times
+https://www.nytimes.com/2022/05/12/world/africa/south-africa-covid-vaccine-factory.html
+french
