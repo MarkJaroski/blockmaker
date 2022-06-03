@@ -2,6 +2,7 @@
 
 use strict;
 use Text::Trim;
+use LWP::UserAgent;
 #use Data::Dumper;
 
 use constant {
@@ -61,6 +62,9 @@ push @{$sections{$link->{section}}}, $link if exists $link->{section};
 
 #print Dumper(\%sections);
 
+my $UA = LWP::UserAgent->new;
+$UA->timeout(10);
+
 open FR, ">>$frenchfile" or die $!;
 foreach my $section (keys(%sections)) {
         # TODO: implement file splitting
@@ -76,6 +80,8 @@ foreach my $section (keys(%sections)) {
         } else {
             print "<br><br>\n" unless $first;
             $first = 0;
+            my $res = $UA->head($block->{url});
+            $block->{source} = "!!!!! BAD BAD BAD -> " . $block->{source} . " <- BAD BAD BAD !!!!" if $res->is_error;
             # TODO: make a nicer looking template
             print $block->{title} . ' - <a  alias="' . $block->{source} . '" conversion="false" data-linkto="https://" href="' 
                 . $block->{url} . '" style="color:#00B1E7;text-decoration:underline;" title="' 
